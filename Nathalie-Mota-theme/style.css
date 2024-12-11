@@ -30,3 +30,7 @@ body.admin-bar .header-container {
 .menu-list li a:hover {
     color: #007bff;
 }
+
+#menu-primary{
+    display: flex;
+}

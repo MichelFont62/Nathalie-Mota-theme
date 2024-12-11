@@ -6,9 +6,6 @@ function nathalie_mota_enqueue_styles() {
 
 add_action('wp_enqueue_scripts', 'nathalie_mota_enqueue_styles');
 
-// Activer le support des menus
-//add_theme_support('menus');
-
 // Enregistrer le menu principal
 function register_my_menus() {
     register_nav_menus(
