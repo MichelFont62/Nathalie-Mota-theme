@@ -1,4 +1,16 @@
 <?php wp_footer() ?>
+        <!-- Menu du footer -->
+        <nav class="footer-navigation">
+        <?php
+        wp_nav_menu(array(
+            'menu' => 'footer', // Indique le menu "footer"
+            'theme_location' => 'footer', // L'emplacement enregistré dans functions.php
+            'container' => 'ul', // Le conteneur utilisé pour le menu
+            'menu_class' => 'footer-menu-list', // Classe CSS pour le <ul>
+            'fallback_cb' => false, // Pas de menu par défaut
+        ));
+        ?>
+    </nav>
 </body>
-<?php get_template_part('template_parts/contact-modal'); ?>
+<?php get_template_part('templates_part/modale-contact'); ?>
 </html>

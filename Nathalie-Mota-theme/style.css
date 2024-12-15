@@ -6,16 +6,46 @@ Version: 1.0
 */
 body {
     margin-top: 32px; /* Compense la barre admin */
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1440px;
+    width: 100%; /* Assure un bon comportement responsive */
+    box-sizing: border-box; /* Inclut les bordures et padding dans la largeur totale */
 }
 
-body.admin-bar .header-container {
-    margin-top: 32px; /* Ajustement spécifique si l'admin-bar est présente */
+@font-face{
+    font-family: "Space-Mono";
+    src: url(fonts/Space_Mono/SpaceMono-Regular.ttf);
+    font-weight: normal;
 }
+
+/* ////////////////////////////////////////////////////////////////// */
+
+/* header */
+
+.header-container{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 62px; /* compensation barre admin */
+    margin-bottom: 35px;
+    background-color: white;
+}
+
+.logo{
+    margin-left: 10%;
+}
+
+.main-navigation{
+    margin-right: 10%;
+}
+
 .menu-list {
+    font-family: "Space-Mono";
     display: flex;
     list-style: none;
     margin: 0;
     padding: 0;
+    gap: 30px;
 }
 
 .menu-list li {
@@ -24,13 +54,88 @@ body.admin-bar .header-container {
 
 .menu-list li a {
     text-decoration: none;
-    color: #333;
+    color: black;
 }
 
 .menu-list li a:hover {
-    color: #007bff;
+    color: red;
 }
 
-#menu-primary{
+/* ///////////////////////////////////////////////////////////////// */
+
+/* Footer */
+
+.footer-navigation {
+    text-align: center; /* Centre le menu */
+    padding: 20px 0;
+    background-color: white;
+}
+
+.footer-navigation::before { /* séparateur horizontal */
+    content: '';
+    display: block;
+    height: 1px; /* Épaisseur de la ligne */
+    background-color: black; /* Couleur de la ligne */
+    width: 100%; /* Largeur complète */
+}
+
+.footer-menu-list {
+    list-style: none; /* Supprime les puces */
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center; /* Centre les éléments horizontalement */
+    gap: 86px; /* Espacement entre les éléments */
+    font-family: "Space-Mono";
+}
+
+.footer-menu-list li a {
+    text-decoration: none;
+    color: black;
+}
+
+.footer-menu-list li:not(:last-child) a:hover {
+    color: red; /* Change la couleur au survol pour tous les liens sauf le dernier */
+}
+
+/* ///////////////////////////////////////////////////////////// */
+
+/* modale contact */
+
+/* Masquer la modale par défaut */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+/* Afficher la modale lorsque la classe "is-visible" est ajoutée */
+.modal.is-visible {
     display: flex;
 }
+
+.modal-content {
+    background: white;
+    padding: 20px;
+    border-radius: 5px;
+    max-width: 500px;
+    width: 100%;
+}
+
+.close-button {
+    cursor: pointer;
+    font-size: 24px;
+    font-weight: bold;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+

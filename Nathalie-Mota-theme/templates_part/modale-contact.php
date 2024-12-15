@@ -4,7 +4,7 @@
         
         <!-- En-tête de la modale avec une image -->
         <div class="modal-header">
-            <img src="<?php echo get_template_directory_uri(); ?>/images/Contact-header" alt="Header" class="modal-header-img">
+            <img src="<?php echo get_template_directory_uri(); ?>/images/Contact-header.png" alt="Header" class="modal-header-img">
         </div>
         
         <!-- Formulaire de contact intégré avec Contact Form 7 -->
