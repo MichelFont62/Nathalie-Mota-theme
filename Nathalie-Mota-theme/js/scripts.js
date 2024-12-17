@@ -1,21 +1,31 @@
-document.addEventListener("DOMContentLoaded", function () {
-    // Sélectionner la modale et les éléments nécessaires
-    const modal = document.getElementById("contact-modal");
-    const closeModalButton = modal.querySelector(".close-button");
+console.log('Le fichier scripts.js est chargé!');
 
-    // Vérifie si la modale existe
+document.addEventListener("DOMContentLoaded", function () {
+    console.log("Script chargé et DOM prêt !");
+    // Sélectionner la modale et les éléments nécessaires
+    const modal = document.getElementById("contact-modal"); // Pas de #
     if (!modal) {
         console.error("Modale introuvable : vérifiez votre HTML.");
         return;
     }
 
+    const closeModalButton = modal.querySelector(".close-button");
+
+    // Vérifiez si le bouton de fermeture existe
+    if (!closeModalButton) {
+        console.error("Bouton de fermeture introuvable dans la modale.");
+        return;
+    }
+
     // Fonction pour ouvrir la modale
     function openModal() {
+        console.log("Ouverture de la modale");
         modal.classList.add("is-visible");
     }
 
     // Fonction pour fermer la modale
     function closeModal() {
+        console.log("Fermeture de la modale");
         modal.classList.remove("is-visible");
     }
 

@@ -2,7 +2,7 @@
 function nathalie_mota_enqueue_styles() {
     // Charger le fichier CSS principal du thème
     wp_enqueue_style('nathalie-mota-style', get_template_directory_uri() . '/style.css', array(), '1.0', 'all');
-    wp_enqueue_script('nathalie-mota-scripts', get_template_directory_uri() . '/js/scripts.js', array(), '1.0', true); // Charge le script dans le footer
+    wp_enqueue_script('nathalie-mota-scripts', get_template_directory_uri() . '/js/scripts.js', array(), '1.0', true); 
 }
 
 add_action('wp_enqueue_scripts', 'nathalie_mota_enqueue_styles');

@@ -19,6 +19,12 @@ body {
     font-weight: normal;
 }
 
+@font-face{
+    font-family: "Poppins";
+    src: url(fonts/Poppins/Poppins-Regular.ttf);
+    font-weight: normal;
+}
+
 /* ////////////////////////////////////////////////////////////////// */
 
 /* header */
@@ -116,26 +122,76 @@ body {
     z-index: 1000;
 }
 
+.modal-content {
+    background: white;
+    padding: 20px;
+    border-radius: 5px;
+    width: 600px;
+    height: 770px;
+}
+
 /* Afficher la modale lorsque la classe "is-visible" est ajoutée */
 .modal.is-visible {
     display: flex;
 }
 
-.modal-content {
-    background: white;
-    padding: 20px;
-    border-radius: 5px;
-    max-width: 500px;
-    width: 100%;
+/* Le formulaire */
+.modal-body{
+    font-family: "Poppins";
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
+
+
+/* Les champs du formulaire */
+.champs-formulaire{
+    display: flex;
+    width: 265px;
+    height:40px;
+    border: 1px solid #B8BBC2;
+    border-radius: 8px;
+    font-family: "Poppins";
+    font-size: 16px;
+}
+
+.champs-message{
+    height: 210px;
+}
+
+.bouton-envoi{
+    display: flex;
+    justify-content:center ;
+    width: 265px;
+    height: 50px;
+    font-family: "Space-Mono";
+    background-color: #D8D8D8;
+    border: none;
+}
+
+.bouton-envoi:hover{
+    background-color: #B0B0B0;
+}
+
 
 .close-button {
     cursor: pointer;
-    font-size: 24px;
+    font-size: 50px;
     font-weight: bold;
     position: absolute;
-    top: 10px;
-    right: 10px;
+    top: 5%;
+    right: 30%;
+    border: 2px solid;
+    border-radius: 50%; 
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #B8BBC2;
 }
 
-
+.close-button:hover{
+    background-color: #A1A6B3; 
+    color: #fff;
+}
