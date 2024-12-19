@@ -6,10 +6,11 @@
         <div class="photo-details">
             <h1><?php the_title(); ?></h1>
             <ul>
-                <li><strong>Réf. Photo :</strong> <?php echo esc_html(get_post_meta(get_the_ID(), 'référence', true)); ?></li>
-                <li><strong>Catégorie :</strong> <?php the_terms(get_the_ID(), 'catégorie'); ?></li>
-                <li><strong>Format :</strong> <?php the_terms(get_the_ID(), 'format'); ?></li>
-                <li><strong>Date de prise de vue :</strong> <?php echo get_the_date(); ?></li>
+                <li>RÉFÉRENCE&nbsp;&nbsp; :&nbsp;&nbsp; <?php echo esc_html(get_post_meta(get_the_ID(), 'reference', true)); ?></li>
+                <li>CATÉGORIE&nbsp;&nbsp; :&nbsp;&nbsp; <?php echo strip_tags(get_the_term_list(get_the_ID(), 'categorie', '', ', ', '')); ?></li>
+                <li>FORMAT&nbsp;&nbsp; :&nbsp;&nbsp; <?php echo strip_tags(get_the_term_list(get_the_ID(), 'format', '', ', ', '')); ?></li>
+                <li>TYPE&nbsp;&nbsp; :&nbsp;&nbsp; <?php echo esc_html(get_post_meta(get_the_ID(), 'type', true)); ?></li>
+                <li>ANNÉE&nbsp;&nbsp; :&nbsp;&nbsp; <?php echo get_the_date(); ?></li>
             </ul>
         </div>
 
@@ -74,6 +75,10 @@
         endif;
         ?>
     </div>
+    <div id="lightbox" class="lightbox">
+    <span class="close-lightbox">&times;</span>
+    <img class="lightbox-image" src="" alt="">
+</div>
 </div>
 
 <?php get_footer(); ?>
