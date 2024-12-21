@@ -8,6 +8,7 @@ body {
     margin-top: 32px; /* Compense la barre admin */
     margin-left: auto;
     margin-right: auto;
+    min-width: 375px;
     max-width: 1440px;
     width: 100%; /* Assure un bon comportement responsive */
     box-sizing: border-box; /* Inclut les bordures et padding dans la largeur totale */
@@ -103,6 +104,111 @@ body {
 .footer-menu-list li:not(:last-child) a:hover {
     color: red; /* Change la couleur au survol pour tous les liens sauf le dernier */
 }
+
+/* ///////////////////////////////////////////////////////////// */
+
+/* hero header */
+
+/* Conteneur principal pour positionnement */
+.hero-header-container{
+    position: relative;
+    width: 100%; /* S'adapte à la largeur de l'écran */
+    height: 962px; /* Ajuste la hauteur du hero header (70% de la hauteur de l'écran) */
+    display: flex;
+    justify-content: center; /* Centre horizontalement le texte */
+    align-items: center; /* Centre verticalement le texte */
+    overflow: hidden; /* Empêche le débordement de l'image */
+}
+
+/* Image du hero header */
+.hero-header {
+    width: 100%; /* Prend toute la largeur disponible */
+    height: 100%; /* Prend toute la hauteur disponible */
+    object-fit: cover; /* Coupe l'image pour couvrir toute la zone */
+    position: absolute; /* Place l'image en arrière-plan */
+    z-index: 1; /* Derrière le texte */
+}
+
+/* Titre du hero header */
+.titre-hero-header {
+    font-family: sans-serif;
+    font-size: 5vw; /* Taille responsive */
+    font-weight: bold;
+    color: transparent; /* Texte transparent */
+    -webkit-text-stroke: 2px white; /* Bordures blanches des lettres */
+    position: relative; /* Assure que le texte soit au-dessus de l'image */
+    z-index: 2; /* Place le texte au-dessus de l'image */
+    text-align: center; /* Centre le texte */
+}
+
+@media (max-width: 768px) {
+    .hero-header-container{
+        height: 253px;
+    }
+
+    .titre-hero-header {
+        font-size: 30px;
+        -webkit-text-stroke: 1px white; /* Bordures blanches des lettres */
+    }
+}
+
+/* ///////////////////////////////////////////////////////////// */
+    /* catalogue photo */
+
+    .catalogue-filters {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 20px;
+    }
+    
+    .catalogue-filters select {
+        padding: 10px;
+        font-size: 1rem;
+    }
+    
+    .photo-list {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+    }
+    
+    .photo-item {
+        position: relative;
+        overflow: hidden;
+        border: 2px solid #ccc;
+        border-radius: 8px;
+    }
+    
+    .photo-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    
+    .photo-item:hover .overlay {
+        opacity: 1;
+    }
+    
+    .overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+    
+    .overlay .icon {
+        font-size: 2rem;
+        color: white;
+        margin: 0 10px;
+    }
+    
 
 /* ///////////////////////////////////////////////////////////// */
 
