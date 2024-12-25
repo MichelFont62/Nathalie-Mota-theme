@@ -1,6 +1,6 @@
 <?php wp_footer() ?>
         <!-- Menu du footer -->
-        <nav class="footer-navigation">
+    <nav class="footer-navigation">
         <?php
         wp_nav_menu(array(
             'menu' => 'footer', // Indique le menu "footer"
@@ -11,6 +11,7 @@
         ));
         ?>
     </nav>
-</body>
 <?php get_template_part('templates_part/modale-contact'); ?>
+<?php wp_footer(); ?> <!-- Indispensable pour charger les scripts du footer -->
+</body>
 </html>

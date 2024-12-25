@@ -43,7 +43,7 @@ function load_photos_ajax() {
 
     // Argument de la requête WP_Query
     $args = array(
-        'post_type' => 'photo',  // Le type de contenu personnalisé
+        'post_type' => 'photos',  // Le type de contenu personnalisé
         'posts_per_page' => 8,   // Nombre de photos à afficher
         'paged' => $page,        // Pagination
     );
@@ -88,8 +88,8 @@ function load_photos_ajax() {
             <div class="photo-item">
                 <img src="<?php the_post_thumbnail_url('full'); ?>" alt="<?php the_title(); ?>">
                 <div class="overlay">
-                    <span class="icon">👁️</span>
-                    <span class="icon">🔲</span>
+                    <span class="icon"><i class="fa-regular fa-eye"></i></span>
+                    <span class="icon"><i class="fa-solid fa-expand"></i></span>
                 </div>
             </div>
             <?php

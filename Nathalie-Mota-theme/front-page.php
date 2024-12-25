@@ -36,20 +36,25 @@
         ?>
     </select>
 
-    <!-- Filtre de tri -->
+<!-- Filtre de tri -->
+<div class="filter-group">
     <select id="sort-filter">
-        <option value="date_desc">Trier par date (Récentes)</option>
-        <option value="date_asc">Trier par date (Anciennes)</option>
+        <option value="" disabled selected>Trier par</option> <!-- Texte par défaut -->
+        <option value="date_desc">Date (Récentes)</option>
+        <option value="date_asc">Date (Anciennes)</option>
     </select>
 </div>
 
+</div>
+    
 <!-- Liste des photos -->
 <div id="photo-list" class="photo-list">
     <!-- Les photos seront chargées ici dynamiquement -->
 </div>
 
 <!-- Bouton Charger plus -->
-<button id="load-more" class="load-more">Charger plus</button>
-
+<div class="charger-plus">
+    <button id="load-more" class="load-more">Charger plus</button>
+</div>
 
 <?php get_footer() ?>
