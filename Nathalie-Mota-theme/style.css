@@ -34,10 +34,13 @@ body {
     justify-content: space-between;
     margin-bottom: 35px;
     background-color: white;
+    align-items: center;
+    height: 50px;
 }
 
 .logo{
     margin-left: 10%;
+
 }
 
 .main-navigation{
@@ -64,6 +67,56 @@ body {
 
 .menu-list li a:hover {
     color: red;
+}
+
+/* Style de base pour le bouton burger */
+.burger-menu {
+    display: none; /* Par défaut, le bouton burger est caché */
+    flex-direction: column;
+    justify-content: space-between;
+    width: 40px;
+    height: 30px;
+    margin-right: 50px;
+}
+
+.burger-line {
+    width: 100%;
+    height: 2px;
+    background-color: black;
+    border-radius: 2px;
+}
+
+/* Affichage du bouton burger sur les petits écrans */
+@media screen and (max-width: 768px) {
+    .burger-menu {
+        display: flex;  /* Afficher le bouton burger sur mobile */
+    }
+
+    /* Menu déroulant avec une position absolue */
+    .main-navigation {
+        display: none;  /* Cacher le menu par défaut */
+        position: absolute;
+        top: 30px;
+        left: 0;
+        background-color: white;
+        width: 70%;
+        text-align: center;
+        padding-top: 20px;
+        z-index: 9999;  /* Assurez-vous que le menu est au-dessus de tout */
+    }
+    
+    .main-navigation.open {
+        display: block;  /* Afficher le menu */
+    }
+
+    .menu-list {
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .menu-list li {
+        margin-right: 0;
+    }
 }
 
 /* ///////////////////////////////////////////////////////////////// */
@@ -102,6 +155,15 @@ body {
 .footer-menu-list li:not(:last-child) a:hover {
     color: red; /* Change la couleur au survol pour tous les liens sauf le dernier */
 }
+
+@media screen and (max-width: 768px) {
+    .footer-menu-list{
+        display: flex;
+        flex-direction: column;
+        gap:20px;
+        margin-top: 40px;
+    }
+    }
 
 /* ///////////////////////////////////////////////////////////// */
 
@@ -251,6 +313,21 @@ body {
         background-color: #b8b5b5; /* Couleur plus sombre au survol */
     }
 
+    @media screen and (max-width: 768px) {
+        .catalogue-filters {
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
+        }
+        /* Liste des photos : 1 colonne sur mobile */
+        .photo-list {
+            grid-template-columns: 1fr; /* Affichage en une seule colonne */
+            width: 90%;
+            margin: 0 auto;
+        }
+    }
+
+
 /* ///////////////////////////////////////////////////////////// */
 
 /* modale contact */
@@ -342,6 +419,43 @@ body {
     background-color: #A1A6B3; 
     color: #fff;
 }
+
+/* Media query pour les petits écrans (responsive) */
+@media screen and (max-width: 768px) {
+    /* Réduire la taille de la modale */
+    .modal-content {
+        width: 60%; /* 60% de la largeur de l'écran */
+        height: auto; /* Hauteur automatique */
+        max-width: 500px; /* Taille maximale pour les très petits écrans */
+        padding: 15px; /* Moins de padding */
+        overflow-y: auto; /* Permet au contenu de défiler verticalement */
+        max-height: 80vh; /* Limiter la hauteur de la modale à 80% de la hauteur de l'écran */
+    }
+
+    /* Réduire la taille des champs du formulaire */
+    .champs-formulaire {
+        width: 100%; /* Les champs occupent toute la largeur */
+        font-size: 14px; /* Réduire la taille du texte */
+    }
+
+    /* Réduire la taille du bouton d'envoi */
+    .bouton-envoi {
+        width: 100%; /* Le bouton occupe toute la largeur */
+    }
+
+    /* Réduire la taille de la croix pour la fermeture */
+    .close-button {
+        font-size: 30px; /* Taille plus petite */
+        top: 10%; /* Placer un peu plus bas */
+        right: 10%; /* Ajuster l'alignement */
+        width: 40px;
+        height: 40px;
+    }
+    .modal-header img{
+        width: 500px;
+    }
+}
+
 
 /* page infos d'une photo */
 

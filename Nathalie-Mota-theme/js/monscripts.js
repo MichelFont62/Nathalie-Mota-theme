@@ -47,3 +47,31 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 });
+
+//////////////////////////////////////////////////////
+                //menu burger
+
+document.addEventListener('DOMContentLoaded', function() {
+    const burgerMenu = document.getElementById('burger-menu');
+    const mainNavigation = document.getElementById('main-navigation');
+    
+    // Vérifiez si burgerMenu et mainNavigation existent avant d'ajouter l'écouteur d'événement
+    if (burgerMenu && mainNavigation) {
+        burgerMenu.addEventListener('click', function() {
+            mainNavigation.classList.toggle('open');
+        });
+    }
+
+// contact responsive
+
+    // Cibler le dernier lien du menu (le lien Contact)
+    const lastMenuItem = document.querySelector('.menu-list li:last-child a');
+    
+    // Vérifiez si lastMenuItem existe avant d'ajouter l'écouteur d'événement
+    if (lastMenuItem) {
+        lastMenuItem.addEventListener('click', function() {
+            // Fermer le menu burger lorsqu'on clique sur le lien Contact
+            mainNavigation.classList.remove('open');
+        });
+    }
+});

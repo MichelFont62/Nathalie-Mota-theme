@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-    <?php wp_head(); ?> <!-- Indispensable pour charger les scripts et styles de WordPress -->
+        <?php wp_head(); ?> <!-- Indispensable pour charger les scripts et styles de WordPress -->
 </head>
 
 <body>
@@ -17,8 +17,15 @@
             </a>
         </div>
 
+    <!-- Bouton Burger (visible sur les petits écrans) -->
+    <div class="burger-menu" id="burger-menu">
+        <div class="burger-line"></div>
+        <div class="burger-line"></div>
+        <div class="burger-line"></div>
+    </div>
+
         <!-- Menu de navigation -->
-        <nav class="main-navigation">
+        <nav id="main-navigation" class="main-navigation">
             <?php
             wp_nav_menu(array(
                 'menu' => 'primary',
