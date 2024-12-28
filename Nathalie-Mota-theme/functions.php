@@ -101,3 +101,5 @@ function load_photos_ajax() {
 
 add_action('wp_ajax_load_photos', 'load_photos_ajax');  // Pour les utilisateurs connectés
 add_action('wp_ajax_nopriv_load_photos', 'load_photos_ajax');  // Pour les utilisateurs non connectés
+
+//////////////////////////////

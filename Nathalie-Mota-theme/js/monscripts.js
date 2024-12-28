@@ -2,8 +2,9 @@ console.log('Le fichier scripts.js est chargé!');
 
 document.addEventListener("DOMContentLoaded", function () {
     console.log("Script chargé et DOM prêt !");
+    
     // Sélectionner la modale et les éléments nécessaires
-    const modal = document.getElementById("contact-modal"); // Pas de #
+    const modal = document.getElementById("contact-modal");
     if (!modal) {
         console.error("Modale introuvable : vérifiez votre HTML.");
         return;
@@ -18,9 +19,17 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // Fonction pour ouvrir la modale
-    function openModal() {
-        console.log("Ouverture de la modale");
+    function openModal(photoRef = "") {
+        console.log("Ouverture de la modale avec la Réf. Photo : " + photoRef);
         modal.classList.add("is-visible");
+
+        // Remplir le champ "RÉF. PHOTO" avec la référence fournie (ou vider si aucune référence)
+        const photoRefField = document.getElementById("photo-ref");
+        if (photoRefField) {
+            photoRefField.value = photoRef; // Remplir ou vider le champ
+        } else {
+            console.error("Champ RÉF. PHOTO introuvable.");
+        }
     }
 
     // Fonction pour fermer la modale
@@ -29,11 +38,14 @@ document.addEventListener("DOMContentLoaded", function () {
         modal.classList.remove("is-visible");
     }
 
-    // Gérer le clic sur le lien "Contact" du menu
+    // Gérer le clic sur le lien "Contact"
     document.querySelectorAll('a[href="#contact-modal"]').forEach(function (link) {
         link.addEventListener("click", function (event) {
             event.preventDefault(); // Empêche le comportement par défaut du lien
-            openModal();
+
+            // Obtenir la référence de la photo depuis l'attribut "data-photo-ref"
+            const photoRef = this.getAttribute("data-photo-ref") || ""; // Par défaut, vide
+            openModal(photoRef); // Ouvrir la modale avec la référence de la photo (ou sans)
         });
     });
 
@@ -47,6 +59,8 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 });
+
+
 
 //////////////////////////////////////////////////////
                 //menu burger
@@ -75,3 +89,28 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
+
+/////////////////////////////////////////////////////////////////
+                //flèche de navigation
+                document.addEventListener("DOMContentLoaded", function () {
+                    // Sélectionnez les liens de navigation
+                    const navigationLinks = document.querySelectorAll(".navigation a");
+                    const thumbnailPreview = document.querySelector(".thumbnail-preview");
+                
+                    navigationLinks.forEach((link) => {
+                        link.addEventListener("mouseover", function () {
+                            const thumbnailUrl = this.getAttribute("data-thumbnail");
+                            if (thumbnailUrl) {
+                                thumbnailPreview.style.backgroundImage = `url(${thumbnailUrl})`;
+                                thumbnailPreview.style.opacity = "1";
+                                thumbnailPreview.style.transform = "translateX(-50%) translateY(-10px)";
+                            }
+                        });
+                
+                        link.addEventListener("mouseout", function () {
+                            thumbnailPreview.style.opacity = "0";
+                            thumbnailPreview.style.transform = "translateX(-50%) translateY(0)";
+                        });
+                    });
+                });
+                
