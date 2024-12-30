@@ -44,8 +44,8 @@ function load_photos_ajax() {
     // Argument de la requête WP_Query
     $args = array(
         'post_type' => 'photos',  // Le type de contenu personnalisé
-        'posts_per_page' => 8,   // Nombre de photos à afficher
-        'paged' => $page,        // Pagination
+        'posts_per_page' => 8,    // Nombre de photos à afficher
+        'paged' => $page,         // Pagination
     );
 
     // Filtre par catégorie
@@ -82,24 +82,27 @@ function load_photos_ajax() {
     // Effectuer la requête
     $query = new WP_Query($args);
 
+    // Vérifier si des posts sont trouvés
     if ($query->have_posts()) :
         while ($query->have_posts()) : $query->the_post();
-            ?>
-            <div class="photo-item">
-                <img src="<?php the_post_thumbnail_url('full'); ?>" alt="<?php the_title(); ?>">
-                <div class="overlay">
-                    <span class="icon"><i class="fa-regular fa-eye"></i></span>
-                    <span class="icon"><i class="fa-solid fa-expand"></i></span>
-                </div>
-            </div>
-            <?php
+            get_template_part('templates_part/photo-item');  // Charger le template photo-item pour chaque photo
         endwhile;
+        wp_reset_postdata();  // Réinitialiser les données de la requête
+    else :
+        echo '<p>Aucune photo trouvée.</p>';  // Si aucune photo n'est trouvée
     endif;
 
-    wp_die();  // Terminer l'exécution Ajax
+    wp_die();  // Terminer l'exécution de l'Ajax
 }
 
 add_action('wp_ajax_load_photos', 'load_photos_ajax');  // Pour les utilisateurs connectés
 add_action('wp_ajax_nopriv_load_photos', 'load_photos_ajax');  // Pour les utilisateurs non connectés
 
 //////////////////////////////
+//lightbox
+
+function enqueue_lightbox_assets() {
+    // Charger le fichier JavaScript
+    wp_enqueue_script('lightbox-script', get_template_directory_uri() . '/js/lightbox.js', array('jquery'), null, true);
+}
+add_action('wp_enqueue_scripts', 'enqueue_lightbox_assets');

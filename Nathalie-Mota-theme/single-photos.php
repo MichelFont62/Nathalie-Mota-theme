@@ -89,13 +89,8 @@
             // Afficher les photos liées
             if ($related_query->have_posts()) :
                 while ($related_query->have_posts()) : $related_query->the_post();
-                    // Vérifiez si l'article a une image à la une
-                    if (has_post_thumbnail()) :
-                        the_post_thumbnail('large'); // Utilisez une taille d'image appropriée
-                    else :
-                        // Affichez une image par défaut si aucune image n'est définie
-                        echo '<img src="' . get_template_directory_uri() . '/images/default-image.jpg" alt="Image par défaut">';
-                    endif;
+                    // Charger le template pour chaque photo apparentée
+                    get_template_part('templates_part/photo-item');  // Ici on charge le template 'photo-item.php' pour chaque photo liée
                 endwhile;
                 wp_reset_postdata();
             else :
@@ -108,10 +103,8 @@
     </div>
 </div>
 
-    <!-- <div id="lightbox" class="lightbox">
-    <span class="close-lightbox">&times;</span>
-    <img class="lightbox-image" src="" alt="">
-</div> -->
+
+
 </div>
 </div>
 <?php get_footer(); ?>

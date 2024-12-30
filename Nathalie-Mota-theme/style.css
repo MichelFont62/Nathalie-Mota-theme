@@ -634,17 +634,9 @@ body {
 }
 
 .related-photos-grid {
-    display: flex;
-    justify-content: center;    
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);  /* 3 colonnes */
     gap: 20px;
-    width: 100%;
-    box-sizing: border-box; /* Inclut les marges dans la largeur totale */
-}
-
-.related-photos-grid img {
-    width: 600px;
-    height: auto;
-    object-fit: cover; /* Garder les proportions sans distorsion */
 }
 
 @media screen and (max-width: 768px) {
@@ -704,6 +696,72 @@ body {
         align-items: center;
         }
     .related-photos-grid img{
-        width: 80%;
+        width:100%;
+        height: 100%;
     }
+}
+
+/* /////////////////////////////////////////////////////////
+        lightbox */
+/* Lightbox container */
+#lightbox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+/* Lightbox image */
+#lightbox img {
+    max-width: 70%; /* Limite la largeur */
+    max-height: 70%; /* Limite la hauteur */
+    object-fit: contain; /* Garde les proportions */
+    transition: transform 0.3s ease;
+}
+
+/* Close button */
+#lightbox .close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    color: white;
+    font-size: 2rem;
+    cursor: pointer;
+    z-index: 10000;
+}
+
+/* Navigation arrows */
+#lightbox .nav-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 2rem;
+    color: white;
+    cursor: pointer;
+    z-index: 10000;
+}
+
+#lightbox .prev {
+    left: 20px;
+}
+
+#lightbox .next {
+    right: 20px;
+}
+
+/* Cursor pointer for the full-screen icon */
+.photo-item .overlay .fa-expand,
+.photo-item .overlay .fa-eye {
+    cursor: pointer; /* Change le curseur pour indiquer qu'il est cliquable */
+}
+
+.photo-item .overlay .fa-expand:hover,
+.photo-item .overlay .fa-eye:hover {
+    opacity: 0.8; /* Légère opacité sur survol */
 }

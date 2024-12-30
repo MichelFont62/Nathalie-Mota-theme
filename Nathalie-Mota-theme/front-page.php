@@ -49,6 +49,24 @@
     
 <!-- Liste des photos -->
 <div id="photo-list" class="photo-list">
+<?php
+$args = array(
+    'post_type' => 'photos', // Type de contenu personnalisé
+    'posts_per_page' => 8,   // Nombre de photos à afficher
+);
+
+$query = new WP_Query($args);
+
+if ($query->have_posts()) :
+    while ($query->have_posts()) : $query->the_post();
+        get_template_part('templates_part/photo-item'); // Inclut le fichier template
+    endwhile;
+    wp_reset_postdata();
+else :
+    echo '<p>Aucune photo trouvée.</p>';
+endif;
+?>
+
     <!-- Les photos seront chargées ici dynamiquement -->
 </div>
 
