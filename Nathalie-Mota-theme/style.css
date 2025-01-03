@@ -215,6 +215,8 @@ body {
 /* ///////////////////////////////////////////////////////////// */
     /* catalogue photo */
 
+    /* filtres */
+
     .catalogue-filters {
         display: flex;
         justify-content: space-between;
@@ -222,15 +224,84 @@ body {
         margin-top: 80px;
     }
     
-    .catalogue-filters select {
-        padding: 10px;
-        font-size: 1rem;
+    .custom-select {
+        position: relative;
         width: 260px;
-        height: 43px;
-        border-radius: 15px;
-        border: 1px solid #B8BBC2;
+        height: 43px; /* Hauteur fixe */
+        border: 1px solid #B8BBC2; /* Bordure comme avant */
+        border-radius: 15px; /* Bord arrondi */
+        background-color: white;
+        cursor: pointer;
     }
     
+    .select-trigger {
+        display: flex;
+        align-items: center;
+        justify-content: left;
+        padding-left: 20px;
+        font-family: "Poppins";
+        height: 43px; /* Garde la hauteur originale */
+        border-radius: 15px; /* Identique à l'extérieur */
+        border: none; /* Pas de bordure ici */
+        position: relative; /* Nécessaire pour positionner les flèches */
+    }
+    
+    .select-trigger::after {
+        content: "\005E"; /* Le symbole ^ */
+        font-size: 19px;
+        letter-spacing: 2px; /* Espace entre les bords de la flèche pour l'élargir */
+        color: #313144;
+        position: absolute;
+        right: 10px;
+        transition: transform 0s ease-in-out;
+    }
+    
+    .custom-select.open .select-trigger::after {
+        content: "\005E"; /* Le symbole ^ */
+        transform: rotate(180deg); /* Inverser la flèche quand ouverte */
+    }
+    
+    .select-options {
+        position: absolute;
+        top: calc(100% - 10px); /* Positionne les options juste en dessous */
+        left: 0;
+        right: 0;
+        font-family: "Poppins";
+        background-color: white;
+        border: 1px solid #B8BBC2; /* Bordure des options */
+        border-radius: 0 0 15px 15px;
+        box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+        z-index: 10;
+        display: none; /* Masquer les options par défaut */
+        padding: 0; /* Retirer tout padding global */
+    }
+    
+    .custom-select.open .select-options {
+        display: block; /* Afficher les options lorsque le menu est ouvert */
+    }
+    
+    .select-options .option {
+        padding: 10px 20px; /* Garder un padding interne sans marge à gauche */
+        font-size: 1rem;
+        cursor: pointer;
+        transition: background-color 0.2s;
+        list-style: none; /* Supprime les puces ou ronds */
+        margin: 0; /* Assure qu'il n'y ait pas de marge par défaut */
+    }
+    
+    .select-options .option:hover {
+        background-color: #FFD6D6; /* Rose clair au survol */
+        color: white;
+    }
+    
+    .select-options .option.active {
+        background-color: #E00000; /* Rouge pour l'option active */
+        color: white;
+    }
+    
+    
+    /* photos */
+
     .photo-list {
         display: grid;
         grid-template-columns: repeat(2, 1fr); /* 2 colonnes */

@@ -113,4 +113,54 @@ document.addEventListener('DOMContentLoaded', function() {
                         });
                     });
                 });
-                
+///////////////////////////////////////////////////////////////////////
+document.addEventListener('DOMContentLoaded', () => {
+    // Trouver toutes les listes déroulantes personnalisées
+    const customSelects = document.querySelectorAll('.custom-select');
+
+    customSelects.forEach(select => {
+        const trigger = select.querySelector('.select-trigger');
+        const options = select.querySelector('.select-options');
+        const optionItems = select.querySelectorAll('.option');
+
+        // Afficher/Masquer les options quand on clique sur le trigger
+        trigger.addEventListener('click', () => {
+            const isOpen = options.style.display === 'block';
+
+            // Ferme les autres listes si nécessaire
+            document.querySelectorAll('.select-options').forEach(opt => opt.style.display = 'none');
+            // Affiche ou masque la liste en fonction de l'état actuel
+            options.style.display = isOpen ? 'none' : 'block';
+
+            // Basculer la classe 'open' pour gérer l'animation de la flèche
+            select.classList.toggle('open', !isOpen);
+        });
+
+        // Gérer le clic sur une option
+        optionItems.forEach(option => {
+            option.addEventListener('click', () => {
+                // Supprimer la classe active des autres options
+                optionItems.forEach(opt => opt.classList.remove('active'));
+                // Ajouter la classe active à l'option cliquée
+                option.classList.add('active');
+                // Mettre à jour le texte du trigger
+                trigger.textContent = option.textContent;
+                // Masquer les options
+                options.style.display = 'none';
+                // Ferme la liste déroulante après sélection
+                select.classList.remove('open'); // Assure que la flèche revient vers le bas
+            });
+        });
+    });
+
+    // Fermer la liste si on clique en dehors
+    document.addEventListener('click', e => {
+        customSelects.forEach(select => {
+            if (!select.contains(e.target)) {
+                const options = select.querySelector('.select-options');
+                options.style.display = 'none';
+                select.classList.remove('open'); // Revenir à l'état fermé
+            }
+        });
+    });
+});

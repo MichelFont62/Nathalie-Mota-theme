@@ -6,9 +6,12 @@
     </div>
     
     <div class="catalogue-filters">
-    <!-- Filtre Catégorie -->
-    <select id="category-filter">
-        <option value="">Catégories</option>
+
+<!-- Filtre Catégorie -->
+<div class="custom-select" id="category-filter">
+    <div class="select-trigger" data-value="">Catégories</div>
+    <ul class="select-options">
+        <li class="option" data-value="">Catégories</li>
         <?php
         // Récupérer toutes les catégories de photos (taxonomie 'categorie')
         $categories = get_terms(array(
@@ -16,14 +19,17 @@
             'hide_empty' => false,
         ));
         foreach ($categories as $category) {
-            echo '<option value="' . esc_attr($category->term_id) . '">' . esc_html($category->name) . '</option>';
+            echo '<li class="option" data-value="' . esc_attr($category->term_id) . '">' . esc_html($category->name) . '</li>';
         }
         ?>
-    </select>
+    </ul>
+</div>
 
-    <!-- Filtre Format -->
-    <select id="format-filter">
-        <option value="">Formats</option>
+<!-- Filtre Format -->
+<div class="custom-select" id="format-filter">
+    <div class="select-trigger" data-value="">Formats</div>
+    <ul class="select-options">
+        <li class="option" data-value="">Formats</li>
         <?php
         // Récupérer tous les formats de photos (taxonomie 'format')
         $formats = get_terms(array(
@@ -31,21 +37,23 @@
             'hide_empty' => false,
         ));
         foreach ($formats as $format) {
-            echo '<option value="' . esc_attr($format->term_id) . '">' . esc_html($format->name) . '</option>';
+            echo '<li class="option" data-value="' . esc_attr($format->term_id) . '">' . esc_html($format->name) . '</li>';
         }
         ?>
-    </select>
+    </ul>
+</div>
 
 <!-- Filtre de tri -->
-<div class="filter-group">
-    <select id="sort-filter">
-        <option value="" disabled selected>Trier par</option> <!-- Texte par défaut -->
-        <option value="date_desc">Date (Récentes)</option>
-        <option value="date_asc">Date (Anciennes)</option>
-    </select>
+<div class="custom-select" id="sort-filter">
+    <div class="select-trigger" data-value="">Trier par</div>
+    <ul class="select-options">
+        <li class="option" data-value="date_desc">Date (Récentes)</li>
+        <li class="option" data-value="date_asc">Date (Anciennes)</li>
+    </ul>
 </div>
 
 </div>
+
     
 <!-- Liste des photos -->
 <div id="photo-list" class="photo-list">
