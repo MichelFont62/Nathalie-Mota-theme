@@ -244,6 +244,7 @@ body {
         border-radius: 15px; /* Identique à l'extérieur */
         border: none; /* Pas de bordure ici */
         position: relative; /* Nécessaire pour positionner les flèches */
+        text-transform: uppercase;
     }
     
     .select-trigger::after {
@@ -274,6 +275,7 @@ body {
         z-index: 10;
         display: none; /* Masquer les options par défaut */
         padding: 0; /* Retirer tout padding global */
+        text-transform: uppercase;
     }
     
     .custom-select.open .select-options {
@@ -710,6 +712,17 @@ body {
     gap: 20px;
 }
 
+/* Cursor pointer for the full-screen icon */
+.photo-item .overlay .fa-expand,
+.photo-item .overlay .fa-eye {
+    cursor: pointer; /* Change le curseur pour indiquer qu'il est cliquable */
+}
+
+.photo-item .overlay .fa-expand:hover,
+.photo-item .overlay .fa-eye:hover {
+    opacity: 0.8; /* Légère opacité sur survol */
+}
+
 @media screen and (max-width: 768px) {
     .photo-content{
         flex-direction: column-reverse;
@@ -774,65 +787,158 @@ body {
 
 /* /////////////////////////////////////////////////////////
         lightbox */
-/* Lightbox container */
-#lightbox {
+
+.lightbox {
+    display: none;
     position: fixed;
     top: 0;
     left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: rgba(0, 0, 0, 0.8);
-    display: flex;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
     justify-content: center;
     align-items: center;
-    z-index: 9999;
+    z-index: 1000;
 }
 
-/* Lightbox image */
-#lightbox img {
-    max-width: 70%; /* Limite la largeur */
-    max-height: 70%; /* Limite la hauteur */
-    object-fit: contain; /* Garde les proportions */
-    transition: transform 0.3s ease;
+/* Lightbox Content */
+.lightbox-content {
+    position: relative;
+    max-width: 80%;
+    max-height: 80%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
-/* Close button */
-#lightbox .close {
+/* Close Button */
+.lightbox-close {
     position: absolute;
     top: 20px;
     right: 20px;
+    background: none;
     color: white;
     font-size: 2rem;
+    border: none;
     cursor: pointer;
-    z-index: 10000;
 }
 
-/* Navigation arrows */
-#lightbox .nav-arrow {
+/* Image */
+.lightbox img {
+    max-width: 100%;
+    max-height: 70vh;
+    margin-bottom: 20px;
+}
+
+/* Lightbox */
+.lightbox {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+/* Lightbox Content */
+.lightbox-content {
+    position: relative;
+    max-width: 80%;
+    max-height: 80%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Image */
+.lightbox img {
+    max-width: 100%;
+    max-height: 70vh;
+    margin-bottom: 20px;
+}
+
+/* Navigation */
+.lightbox-navigation {
     position: absolute;
     top: 50%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
     transform: translateY(-50%);
-    font-size: 2rem;
+    z-index: 10; /* Assure-toi que les flèches sont au-dessus de l'image */
+    left: 0;
+    right: 0;
+    padding: 0 2rem; /* Espace à gauche et à droite pour sortir les flèches */
+}
+
+/* Flèche et Texte */
+.prev-photo, .next-photo {
+    background: transparent;
     color: white;
+    font-size: 1rem;  /* Taille du texte */
     cursor: pointer;
-    z-index: 10000;
+    border: none;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Space-Mono";
 }
 
-#lightbox .prev {
-    left: 20px;
+/* Flèche "Précédente" */
+.prev-photo {
+    position: absolute; /* Positionner la flèche en dehors de l'image */
+    left: -9rem;  /* Décale la flèche à gauche, en dehors de l'image */
+    display: flex;
+    align-items: center;
 }
 
-#lightbox .next {
-    right: 20px;
+.prev-photo .arrow {
+    font-size: 3rem; /* Taille des flèches */
+    margin-right: 0.5rem;  /* Espace entre la flèche et le texte */
 }
 
-/* Cursor pointer for the full-screen icon */
-.photo-item .overlay .fa-expand,
-.photo-item .overlay .fa-eye {
-    cursor: pointer; /* Change le curseur pour indiquer qu'il est cliquable */
+/* Flèche "Suivante" */
+.next-photo {
+    position: absolute; /* Positionner la flèche en dehors de l'image */
+    right: -4rem; /* Décale la flèche à droite, en dehors de l'image */
+    display: flex;
+    align-items: center;
 }
 
-.photo-item .overlay .fa-expand:hover,
-.photo-item .overlay .fa-eye:hover {
-    opacity: 0.8; /* Légère opacité sur survol */
+.next-photo .arrow {
+    font-size: 3rem;  /* Taille des flèches */
+    margin-left: 0.5rem; /* Espace entre le texte et la flèche */
+}
+
+/* Effet de survol */
+.prev-photo:hover, .next-photo:hover {
+    color: #E5E5E5; /* Change la couleur au survol */
+}
+
+/* Info */
+.lightbox-info {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    color: white;
+    font-size: 1rem;
+    text-transform: uppercase;
+    font-family: "Poppins";
+}
+
+.lightbox-title {
+    margin-left: 10px;
+}
+
+.lightbox-category {
+    margin-right: 10px;
 }

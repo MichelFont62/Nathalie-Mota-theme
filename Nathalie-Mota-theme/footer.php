@@ -10,20 +10,27 @@
         ));
         ?>
     </nav>
-    <!-- lightbox -->
-    <div id="lightbox-overlay" class="lightbox-overlay">
-    <div class="lightbox-container">
-        <span id="lightbox-close" class="lightbox-close">&times;</span>
-        <img id="lightbox-image" class="lightbox-image" src="" alt="">
+<!-- lightbox -->
+<div id="lightbox" class="lightbox">
+    <div class="lightbox-content">
+        <div class="lightbox-navigation">
+            <button class="prev-photo">
+                <span class="arrow">&#8592;</span> <!-- Flèche gauche -->
+                <span>Précédent</span>
+            </button>
+            <button class="next-photo">
+                <span>Suivante</span>
+                <span class="arrow">&#8594;</span> <!-- Flèche droite -->
+            </button>
+        </div>
+        <img id="lightbox-image" src="" alt="">
         <div class="lightbox-info">
-            <h2 id="lightbox-title" class="lightbox-title"></h2>
-            <div class="lightbox-navigation">
-                <button id="lightbox-prev" class="lightbox-nav-btn">Précédent</button>
-                <button id="lightbox-next" class="lightbox-nav-btn">Suivant</button>
-            </div>
+            <span id="lightbox-title" class="lightbox-title"></span>
+            <span id="lightbox-category" class="lightbox-category"></span>
         </div>
     </div>
 </div>
+
 <?php get_template_part('templates_part/modale-contact'); ?>
 <?php wp_footer(); ?> <!-- Indispensable pour charger les scripts du footer -->
 </body>
