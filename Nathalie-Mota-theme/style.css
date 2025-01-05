@@ -539,12 +539,12 @@ body {
  
 .photo-content {
     display: flex;
-    height: auto;
+    height: calc(100vh - 118px - 85px - 8px - 35px);
 }
 
 /* Bloc infos (gauche) */
 .photo-details{
-    width: 50%;
+    flex:1;
     display: flex;
     justify-content: end;
     flex-direction: column;
@@ -585,7 +585,7 @@ body {
 
 /* Bloc photo (droite) */
 .photo-display {
-    width: 50%;
+    flex:1;
     height: 100%;
     margin-right: 5vw;
 }
@@ -942,3 +942,4 @@ body {
 .lightbox-category {
     margin-right: 10px;
 }
+
